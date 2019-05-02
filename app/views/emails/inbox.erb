@@ -1,9 +1,16 @@
-<h1>Welcome, <%= @current_user %></h1>
+<h1>Welcome, <%= @current_user.username %></h1>
 
 
-<li>
-  <% @emails.each do |email| %>
-    <li><%= email.content %></li>
-</li>
+<% if @emails == nil %>
+    <h2>Your inbox is empty</h2>
+<% else %>
+  <li>
+    <% @emails.each do |email|  %>
+      <li> email.content %></li>
+    <% end %>
+  </li>
+<% end %>
 
-<h2>some content</h2>
+<button type="button" name="button"><a href="/edit">Create New Email</a></button>
+
+<button type="button" name="button"><a href="/logout">Logout</a></button>
