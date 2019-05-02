@@ -1,16 +1,40 @@
 <h1>Welcome, <%= @current_user.username %></h1>
 
+<h3>Contacts: </h3>
+<ul>
+  <% @contacts.each do |contact| %>
+    <li><%= contact.address %></li>
+  <% end %>
+</ul>
 
-<% if @emails == nil %>
+<h3>Recieved: </h3>
+<% if @recieved_emails == nil %>
     <h2>Your inbox is empty</h2>
 <% else %>
-  <li>
-    <% @emails.each do |email|  %>
-      <li> email.content %></li>
+  <ul>
+    <% @recieved_emails.each do |email|  %>
+      <li> <%= email.content %> </li>
     <% end %>
-  </li>
+  </ul>
 <% end %>
 
-<button type="button" name="button"><a href="/edit">Create New Email</a></button>
+<br>
+<br>
+
+<h3>Sent: </h3>
+<% if @sent_emails == nil %>
+    <h2>Your outbox is empty</h2>
+<% else %>
+  <ul>
+    <% @sent_emails.each do |email|  %>
+      <li><%= email.content %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br><br>
+
+
+<button type="button" name="button"><a href="/new">Create New Email</a></button>
 
 <button type="button" name="button"><a href="/logout">Logout</a></button>

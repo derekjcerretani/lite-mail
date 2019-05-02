@@ -1,4 +1,4 @@
 class Email < ActiveRecord::Base
   belongs_to :user
-  has_many :contacts
+  belongs_to :contact
 end
