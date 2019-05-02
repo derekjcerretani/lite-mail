@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190501211223) do
+ActiveRecord::Schema.define(version: 20190501235533) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.string  "address"
+    t.integer "email_id"
+  end
+
+  create_table "email_contacts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "contact_id"
+  end
 
   create_table "emails", force: :cascade do |t|
     t.text    "content"
@@ -20,7 +30,7 @@ ActiveRecord::Schema.define(version: 20190501211223) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "email"
+    t.string "email_address"
     t.string "password_digest"
   end
 
