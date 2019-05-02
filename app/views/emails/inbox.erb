@@ -1,36 +1,46 @@
 <h1>Welcome, <%= @current_user.username %></h1>
 
 <h3>Contacts: </h3>
-<ul>
+  <% contact_array = [] %>
   <% @contacts.each do |contact| %>
-    <li><%= contact.address %></li>
+    <% contact_array << contact.address %>
   <% end %>
-</ul>
+  <ol>
+    <li><%= contact_array.uniq.join(", ") %></li>
+  </ol>
+
+  <br>
+  <br>
 
 <h3>Recieved: </h3>
-<% if @recieved_emails == nil %>
+<% if @recieved_emails.empty? %>
     <h2>Your inbox is empty</h2>
 <% else %>
-  <ul>
+  <ol>
+    <% recieved_array = [] %>
     <% @recieved_emails.each do |email|  %>
-      <li> <%= email.content %> </li>
+      <% recieved_array << email.content %>
     <% end %>
-  </ul>
+    <%= recieved_array.uniq.join %>
+  </ol>
 <% end %>
 
 <br>
 <br>
 
-<h3>Sent: </h3>
-<% if @sent_emails == nil %>
-    <h2>Your outbox is empty</h2>
+<h3>sent: </h3>
+<% if @sent_emails.empty? %>
+    <h2>Your inbox is empty</h2>
 <% else %>
-  <ul>
+  <ol>
+    <% sent_array = [] %>
     <% @sent_emails.each do |email|  %>
-      <li><%= email.content %></li>
+      <% sent_array << email.content %>
     <% end %>
-  </ul>
+    <%= sent_array.uniq.join %>
+  </ol>
 <% end %>
+
 
 <br><br>
 
