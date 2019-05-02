@@ -4,7 +4,8 @@ class EmailsController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
-      @emails = Email.all
+      @emails = Email.find_by(session[:user_id])
+      binding.pry
       erb :'emails/inbox'
     end
   end

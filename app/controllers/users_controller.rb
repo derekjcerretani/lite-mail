@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if params.any? {|k, v| v.empty?}
       redirect to '/failure'
     else
-      @user = User.create(username: params[:username], email: params[:email], password: params[:password])
+      @user = User.create(username: params[:username], email_address: params[:email_address], password: params[:password])
       session[:user_id] = @user.id
       redirect to '/inbox'
     end
@@ -20,17 +20,17 @@ class UsersController < ApplicationController
 
   get '/login' do
     if !logged_in?
-      erb :'/users/login'
+      erb :'users/login'
     else
-      redirect to '/inbox'
+      erb :'emails/inbox'
     end
   end
 
   post '/login' do
-    user = User.find_by(email: params[:email])
+    user = User.find_by(email_address: params[:email_address])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/inbox'
+      erb :'emails/inbox'
     else
       redirect to '/signup'
     end
