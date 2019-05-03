@@ -12,34 +12,40 @@
   <br>
   <br>
 
-<h3>Recieved: </h3>
+<h3>recieved: </h3>
+<% recieved_array = [] %>
 <% if @recieved_emails.empty? %>
     <h2>Your inbox is empty</h2>
 <% else %>
-  <ol>
-    <% recieved_array = [] %>
     <% @recieved_emails.each do |email|  %>
       <% recieved_array << email.content %>
     <% end %>
-    <%= recieved_array.uniq.join %>
-  </ol>
 <% end %>
+<ol>
+  <% recieved_array.uniq.each.with_index do |content, i| %>
+    <li><%= i + 1 %>. <%= content %></li>
+  <% end %>
+</ol>
 
 <br>
 <br>
 
 <h3>sent: </h3>
+<% sent_array = [] %>
 <% if @sent_emails.empty? %>
-    <h2>Your inbox is empty</h2>
+    <h2>Your outbox is empty</h2>
 <% else %>
-  <ol>
-    <% sent_array = [] %>
     <% @sent_emails.each do |email|  %>
       <% sent_array << email.content %>
     <% end %>
-    <%= sent_array.uniq.join %>
-  </ol>
 <% end %>
+<ol>
+  <% sent_array.uniq.each.with_index do |content, i| %>
+    <li><%= i + 1 %>. <%= content %></li>
+  <% end %>
+</ol>
+
+
 
 
 <br><br>

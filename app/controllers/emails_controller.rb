@@ -5,7 +5,9 @@ class EmailsController < ApplicationController
       redirect to '/login'
     else
       @sent_emails = Email.where(user_id: session[:user_id])
-      @recieved_emails = Email.where(contact_id: session[:user_id])
+
+      @recieved_emails = Email.where(contact_id: @current_user.id)
+
       @contacts = @current_user.contacts
       erb :'emails/inbox'
     end
@@ -25,12 +27,13 @@ class EmailsController < ApplicationController
     else
       email = Email.create(content: params[:email][:content])
       contact = Contact.find_or_create_by(address: params[:contact][:address])
+
       email.user = @current_user
       email.contact = contact
+      @current_user.contacts << contact
       @current_user.emails << email
       contact.emails << email
       email.save
-      binding.pry
       redirect to '/inbox'
     end
   end
