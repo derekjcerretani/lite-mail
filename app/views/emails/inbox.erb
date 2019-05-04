@@ -9,50 +9,32 @@
     <li><%= contact_array.uniq.join(", ") %></li>
   </ol>
 
-  <br>
-  <br>
+<br>
+<br>
 
-<h3>received: </h3>
-<% received_array = [] %>
+<h3>INBOX:</h3><br>
 <% if @received_emails.empty? || nil %>
-    <h2>Your inbox is empty</h2>
+  <h2>Your outbox is empty</h2>
 <% else %>
-    <% @received_emails.each do |email|  %>
-      <% received_array << email.content %>
-    <% end %>
-<% end %>
-<ol>
-  <% received_array.uniq.each.with_index do |content, i| %>
-    <li><%= i + 1 %>. <%= content %></li>
+<% @received_emails.each_with_index do |email, i| %>
+    <ul>
+      <li><a href="#"><%= i + 1 %>.</a> <strong>From: </strong><%= email.user.email_address %>: <%= email.content %></li><br>
+    </ul>
   <% end %>
-</ol>
+<% end %>
 
-<br>
-<br>
+<br><br>
 
-<h3>sent: </h3>
-<% sent_array = [] %>
+<h3>OUTBOX:</h3><br>
 <% if @sent_emails.empty? || nil %>
-    <h2>Your outbox is empty</h2>
+  <h2>Your outbox is empty</h2>
 <% else %>
-    <% @sent_emails.each do |email|  %>
-      <% sent_array << email.content %>
-    <% end %>
-<% end %>
-<ol>
-  <% sent_array.uniq.each.with_index do |content, i| %>
-    <li><%= i + 1 %>. <%= content %> </li>
+<% @sent_emails.each_with_index do |email, i| %>
+    <ul>
+      <li><a href="#"><%= i + 1 %>.</a> <strong>To: </strong><%= email.contact.address %>: <%= email.content %></li><br>
+    </ul>
   <% end %>
-</ol>
-
-<h3>received Example:</h3>
-<% @received_emails.each do |email| %>
-  <ul>
-    <li><%= email.content %>, <%= email.user.email_address %></li>
-  </ul>
 <% end %>
-
-
 
 
 <br><br>

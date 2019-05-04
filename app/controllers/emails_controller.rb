@@ -5,10 +5,11 @@ class EmailsController < ApplicationController
       redirect to '/login'
     else
       @sent_emails = @current_user.emails.where(user_id: session[:user_id])
-      # @received_emails = Email.where(contact_id: session[:user_id])
+
       @received_emails = Email.where(contact_id: Contact.where(user_id: @current_user.id))
 
       @contacts = @current_user.contacts
+      binding.pry
       erb :'emails/inbox'
     end
   end
