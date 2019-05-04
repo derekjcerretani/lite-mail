@@ -34,9 +34,11 @@ class UsersController < ApplicationController
         user = User.new(username: params[:username], email_address: contact.address, password: params[:password])
         user.save
         session[:user_id] = user.id
+        contact.user_id = session[:user_id]
+        contact.save
       else
         user = User.create(username: params[:username], email_address: params[:email_address], password: params[:password])
-        contact = Contact.create(address: params[:email_address])
+        contact = Contact.create(address: params[:email_address], user_id: user.id)
         session[:user_id] = user.id
       end
       redirect to '/inbox'

@@ -12,17 +12,17 @@
   <br>
   <br>
 
-<h3>recieved: </h3>
-<% recieved_array = [] %>
-<% if @recieved_emails.empty? %>
+<h3>received: </h3>
+<% received_array = [] %>
+<% if @received_emails.empty? || nil %>
     <h2>Your inbox is empty</h2>
 <% else %>
-    <% @recieved_emails.each do |email|  %>
-      <% recieved_array << email.content %>
+    <% @received_emails.each do |email|  %>
+      <% received_array << email.content %>
     <% end %>
 <% end %>
 <ol>
-  <% recieved_array.uniq.each.with_index do |content, i| %>
+  <% received_array.uniq.each.with_index do |content, i| %>
     <li><%= i + 1 %>. <%= content %></li>
   <% end %>
 </ol>
@@ -32,7 +32,7 @@
 
 <h3>sent: </h3>
 <% sent_array = [] %>
-<% if @sent_emails.empty? %>
+<% if @sent_emails.empty? || nil %>
     <h2>Your outbox is empty</h2>
 <% else %>
     <% @sent_emails.each do |email|  %>
@@ -41,9 +41,16 @@
 <% end %>
 <ol>
   <% sent_array.uniq.each.with_index do |content, i| %>
-    <li><%= i + 1 %>. <%= content %></li>
+    <li><%= i + 1 %>. <%= content %> </li>
   <% end %>
 </ol>
+
+<h3>received Example:</h3>
+<% @received_emails.each do |email| %>
+  <ul>
+    <li><%= email.content %>, <%= email.user.email_address %></li>
+  </ul>
+<% end %>
 
 
 

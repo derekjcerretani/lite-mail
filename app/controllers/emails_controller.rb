@@ -4,9 +4,9 @@ class EmailsController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
-      @sent_emails = Email.where(user_id: session[:user_id])
-
-      @recieved_emails = Email.where(contact_id: @current_user.id)
+      @sent_emails = @current_user.emails.where(user_id: session[:user_id])
+      # @received_emails = Email.where(contact_id: session[:user_id])
+      @received_emails = Email.where(contact_id: Contact.where(user_id: @current_user.id))
 
       @contacts = @current_user.contacts
       erb :'emails/inbox'
