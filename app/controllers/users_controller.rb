@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if !logged_in?
-      erb :'users/create_user'
+      erb :'users/new'
     else
       redirect to '/inbox'
     end
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         contact = Contact.create(address: params[:email_address], user_id: user.id)
         session[:user_id] = user.id
       end
-      redirect to '/inbox'
+      redirect to '/login'
     end
   end
 

@@ -18,7 +18,7 @@
 <% else %>
 <% @received_emails.each_with_index do |email, i| %>
     <ul>
-      <li><a href="show/<%= email.id %>">(<%= email.id %>)</a> <strong>From: </strong><%= email.user.email_address %>: <%= email.content %></li><br>
+      <li>(<%= email.id %>) <strong>From: </strong><%= email.user.email_address %>: <%= email.content %></li><br>
     </ul>
   <% end %>
 <% end %>

@@ -1,0 +1,11 @@
+<h3>Old Message: <%= @email.content %></h3>
+
+<br><br><br>
+
+<h3>New Message:</h3><br>
+
+<form action="/edit/<%= @email.id %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <textarea name="content" rows="8" cols="80"></textarea><br>
+  <input type="submit" name="submit" value="Edit">
+</form>

@@ -7,4 +7,8 @@
 <p><%= @email.content %></p>
 
 <button type="button" name="button"><a href="/edit/<%= @email.id %>">Edit</a> </button>
-<button type="button" name="button"><a href="/edit/<%= @email.id %>/delete">Delete</a> </button>
+
+<form class="" action="/edit/<%= @email.id %>/delete" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" name="submit" value="Delete">
+</form>

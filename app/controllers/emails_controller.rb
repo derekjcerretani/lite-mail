@@ -26,23 +26,64 @@ class EmailsController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
-      email = Email.create(content: params[:email][:content])
-      contact = Contact.find_or_create_by(address: params[:contact][:address])
+      if !params[:email][:content].empty? && !params[:contact][:address].empty?
+        email = Email.create(content: params[:email][:content])
+        contact = Contact.find_or_create_by(address: params[:contact][:address])
 
-      email.user = @current_user
-      email.contact = contact
-      @current_user.contacts << contact
-      @current_user.emails << email
-      contact.emails << email
-      email.save
-      redirect to '/inbox'
+        email.user = @current_user
+        email.contact = contact
+        @current_user.contacts << contact
+        @current_user.emails << email
+        contact.emails << email
+        email.save
+        redirect to '/inbox'
+      else
+        redirect to '/new'
+      end
     end
   end
 
   get '/show/:id' do
-    @email = Email.find(params[:id])
-    binding.pry
-    erb :'/emails/show_email'
+    if !logged_in?
+      redirect to '/login'
+    else
+      @email = Email.find(params[:id])
+      erb :'/emails/show_email'
+    end
+  end
+
+  get '/edit/:id' do
+    if !logged_in?
+      redirect to '/login'
+    else
+      @email = Email.find(params[:id])
+      erb :'/emails/edit_email'
+    end
+  end
+
+  patch '/edit/:id' do
+    if !logged_in?
+      redirect '/login'
+    else
+      if !params[:content].empty?
+        @email = Email.find(params[:id])
+        @email.update(content: params[:content])
+        redirect to '/inbox'
+        binding.pry
+      else
+        redirect to "/edit/#{@email.id}"
+      end
+    end
+  end
+
+  delete '/edit/:id/delete' do
+    if !logged_in?
+      redirect '/login'
+    else
+      email = Email.find(params[:id])
+      email.delete
+      redirect to '/inbox'
+    end
   end
 
 
