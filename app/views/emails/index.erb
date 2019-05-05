@@ -1,6 +1,6 @@
 <h1>Welcome, <%= @current_user.username %></h1>
 
-<h3>Contacts: </h3>
+<h3>CONTACTS: </h3>
   <% contact_array = [] %>
   <% @contacts.each do |contact| %>
     <% contact_array << contact.address %>
@@ -18,7 +18,7 @@
 <% else %>
 <% @received_emails.each_with_index do |email, i| %>
     <ul>
-      <li><a href="#"><%= i + 1 %>.</a> <strong>From: </strong><%= email.user.email_address %>: <%= email.content %></li><br>
+      <li><a href="show/<%= email.id %>">(<%= email.id %>)</a> <strong>From: </strong><%= email.user.email_address %>: <%= email.content %></li><br>
     </ul>
   <% end %>
 <% end %>
@@ -31,7 +31,7 @@
 <% else %>
 <% @sent_emails.each_with_index do |email, i| %>
     <ul>
-      <li><a href="#"><%= i + 1 %>.</a> <strong>To: </strong><%= email.contact.address %>: <%= email.content %></li><br>
+      <li><a href="show/<%= email.id %>">(<%= email.id %>)</a> <strong>To: </strong><%= email.contact.address %>: <%= email.content %></li><br>
     </ul>
   <% end %>
 <% end %>

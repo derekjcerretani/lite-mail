@@ -8,23 +8,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # post '/signup' do
-  #   if params.any? {|k, v| v.empty?}
-  #     redirect to '/failure'
-  #   else
-  #     contact = Contact.find_by(address: params[:email_address])
-  #     if contact
-  #       user = User.new(username: params[:username], email_address: contact.address, password: params[:password])
-  #       session[:user_id] = contact.id
-  #       user.save
-  #     else
-  #       user = User.create(username: params[:username], email_address: params[:email_address], password: params[:password])
-  #       session[:user_id] = session.id
-  #     end
-  #     redirect to '/inbox'
-  #   end
-  # end
-
   post '/signup' do
     if params.any? {|k, v| v.empty?}
       redirect to '/failure'

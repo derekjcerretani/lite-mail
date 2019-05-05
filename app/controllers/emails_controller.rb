@@ -9,8 +9,8 @@ class EmailsController < ApplicationController
       @received_emails = Email.where(contact_id: Contact.where(user_id: @current_user.id))
 
       @contacts = @current_user.contacts
-      binding.pry
-      erb :'emails/inbox'
+
+      erb :'emails/index'
     end
   end
 
@@ -37,6 +37,12 @@ class EmailsController < ApplicationController
       email.save
       redirect to '/inbox'
     end
+  end
+
+  get '/show/:id' do
+    @email = Email.find(params[:id])
+    binding.pry
+    erb :'/emails/show_email'
   end
 
 
