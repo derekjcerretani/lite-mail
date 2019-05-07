@@ -18,11 +18,6 @@ ActiveRecord::Schema.define(version: 20190507184223) do
     t.integer "user_id"
   end
 
-  create_table "email_contacts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "contact_id"
-  end
-
   create_table "emails", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"

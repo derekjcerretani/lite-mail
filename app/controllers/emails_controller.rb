@@ -33,7 +33,6 @@ class EmailsController < ApplicationController
         email.user = @current_user
         email.contact = contact
         email.save
-        binding.pry
         redirect to '/inbox'
       else
         redirect to '/new'
