@@ -47,8 +47,12 @@ class EmailsController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
-      @email = Email.find(params[:id])
-      erb :'/emails/show_email'
+      @email = @current_user.emails.find(params[:id])
+      if @email
+        erb :'/emails/show_email_outbox'
+      else
+        redirect to '/inbox'
+      end
     end
   end
 
@@ -56,8 +60,12 @@ class EmailsController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
-      @email = Email.find(params[:id])
-      erb :'/emails/edit_email'
+      @email = @current_user.emails.find(params[:id])
+      if @email
+        erb :'/emails/edit_email'
+      else
+        redirect to '/inbox'
+      end
     end
   end
 
