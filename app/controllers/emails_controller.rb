@@ -43,6 +43,21 @@ class EmailsController < ApplicationController
     end
   end
 
+  get '/show_inbox/:id' do
+    if !logged_in?
+      redirect to '/login'
+    else
+      binding.pry
+      contact = Contact.find(params[:id])
+      @email = contact.emails.find_by(contact_id: params[:id])
+      if @email
+        erb :'/emails/show_email_inbox'
+      else
+        redirect to '/inbox'
+      end
+    end
+  end
+
   get '/show/:id' do
     if !logged_in?
       redirect to '/login'

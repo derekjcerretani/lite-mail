@@ -1,0 +1,9 @@
+<h1>Hi, <%= @current_user.username %></h1>
+<h2>Email #<%= @email.id %></h2>
+
+<h4>From: <%= @email.user.email_address %></h4><br>
+<h4>To: <%= @email.contact.address %></h4><br>
+
+<p><%= @email.content %></p>
+
+<button type="button" name="button"><a href="/inbox">Back to inbox</a> </button>
