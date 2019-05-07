@@ -4,6 +4,13 @@
 <h4>From: <%= @email.user.email_address %></h4><br>
 <h4>To: <%= @email.contact.address %></h4><br>
 
-<p><%= @email.content %></p>
+<% @conversation.each.with_index(1) do |email, i| %>
+  <% if email.user_id == @current_user.id %>
+    <p><%= i %>. From: <%= @current_user.email_address %> <br><br> <%= email.content %></p>
+  <% else  %>
+    <p><%= i %>. From: <%= email.user.email_address %> <br><br> <%= email.content %></p>
+  <% end  %>
+<% end %>
 
+<button type="button" name="button"><a href="/new">Reply</a></button><br><br>
 <button type="button" name="button"><a href="/inbox">Back to inbox</a> </button>

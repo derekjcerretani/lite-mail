@@ -12,22 +12,22 @@
 <br>
 <br>
 
-<h3>INBOX:</h3><br>
+<h3>INBOX</h3><span>(click message to see full correspondence)</span><br><br>
 <% if @received_emails.empty? || nil %>
-  <h2>Your outbox is empty</h2>
+  <h3>Your inbox is empty</h3>
 <% else %>
 <% @received_emails.each_with_index do |email, i| %>
     <ul>
-      <li><a href="show_inbox/<%= email.id %>"><strong>From: </strong><%= email.user.email_address %>: <%= email.content %></a></li><br>
+      <li><a href="/show_inbox/<%= email.id %>"><strong>From: </strong><%= email.user.email_address %>: <%= email.content %></a></li><br>
     </ul>
   <% end %>
 <% end %>
 
 <br><br>
 
-<h3>OUTBOX (click to edit or delete)</h3><br>
+<h3>OUTBOX</h3><span>(click message to edit or delete)</span><br><br>
 <% if @sent_emails.empty? || nil %>
-  <h2>Your outbox is empty</h2>
+  <h3>Your outbox is empty</h3>
 <% else %>
 <% @sent_emails.each_with_index do |email, i| %>
     <ul>

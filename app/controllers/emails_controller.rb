@@ -27,15 +27,13 @@ class EmailsController < ApplicationController
       redirect to '/login'
     else
       if !params[:email][:content].empty? && !params[:contact][:address].empty?
-        email = Email.create(content: params[:email][:content])
+        email = Email.new(content: params[:email][:content])
         contact = Contact.find_or_create_by(address: params[:contact][:address])
 
         email.user = @current_user
         email.contact = contact
-        @current_user.contacts << contact
-        @current_user.emails << email
-        contact.emails << email
         email.save
+        binding.pry
         redirect to '/inbox'
       else
         redirect to '/new'
@@ -47,9 +45,13 @@ class EmailsController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
-      binding.pry
-      contact = Contact.find(params[:id])
-      @email = contact.emails.find_by(contact_id: params[:id])
+      emails = []
+      @email = Email.find(params[:id])
+      contact = @email.user
+      emails << @received_emails = Email.where(user_id: contact.id, contact_id: @current_user.id)
+      emails << @sent_emails = Email.where(user_id: @current_user.id, contact_id: contact.id)
+      emails.flatten.sort_by { |email| email.created_at}
+      @conversation = emails.flatten
       if @email
         erb :'/emails/show_email_inbox'
       else
