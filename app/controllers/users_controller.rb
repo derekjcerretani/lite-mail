@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params.any? {|k, v| v.empty?}
-      redirect to '/failure'
+      erb :'users/failure'
     else
       contact = Contact.find_by(address: params[:email_address])
       if contact
