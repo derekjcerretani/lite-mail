@@ -148,6 +148,16 @@
     background-color: rgb(88, 182, 89);
   }
 
+  /*-------- Signup Page Styles ---------*/
+
+  .signup_form input[type=submit] {
+    padding: 1rem 1.5rem;
+  }
+
+  .headline, h3 {
+    text-align: center;
+  }
+
 }
 
 @media screen and (max-width: 600px) {

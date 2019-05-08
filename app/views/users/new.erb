@@ -1,20 +1,29 @@
-<h1>Signup before logging in!</h1>
+<div id="signup_page">
 
-<form action="/signup" method="POST">
+  <div class="headline">
+    <h2>LiteMail</h2>
+  </div>
 
-  <br><br>
-  <label for="username">Username: </label>
-  <input id="username" type="text" name="username">
+  <h3>CREATE YOUR ACCOUNT</h3>
 
-  <br><br>
-  <label for="email_address">Email: </label>
-  <input id="email_address" type="text" name="email_address">
+  <div class="signup_form">
+    <form action="/signup" method="POST">
 
-  <br><br>
-  <label for="password">Password: </label>
-  <input id="password" type="password" name="password">
+      <br><br>
+      <label for="username"></label>
+      <input id="username" type="text" name="username" placeholder="choose username...">
 
-  <br><br>
-  <input type="submit" name="signup" value="signup">
+      <br><br>
+      <label for="email_address"></label>
+      <input id="email_address" type="text" name="email_address" placeholder="email address...">
 
-</form>
+      <br><br>
+      <label for="password"></label>
+      <input id="password" type="password" name="password" placeholder="password...">
+
+      <br><br>
+      <input type="submit" name="signup" value="signup">
+
+    </form>
+  </div>
+</div>
