@@ -1,21 +1,41 @@
-<form action="/login" method="post">
+<div id="login_page">
 
-  <label> LOGIN! </label>
+  <div class="headline">
+    <h2>LiteMail</h2>
+  </div>
 
-  <br><br>
+  <div id="login">
 
-  <label for="email_address">Email Address:</label>
-  <input type="text" name="email_address">
+    <form action="/login" method="POST"
 
-  <br><br>
+      <h3> USER LOGIN </h3>
 
-  <label for="password">Password:</label>
-  <input type="password" name="password">
+      <br><br>
 
-  <br><br>
+      <label for="email_address"></label>
+      <input type="text" name="email_address" placeholder="email address...">
 
-  <input id="submit" type="submit" value="Log In">
+      <br><br>
 
-</form>
+      <label for="password"></label>
+      <input type="password" name="password" placeholder="password...">
 
-<button type="button" name="button"><a href="/signup">signup</a> </button>
+      <br><br>
+
+      <input id="submit" type="submit" value="Log In">
+
+    </form>
+
+  </div>
+
+
+  <div id="signup">
+    <h4>New to LiteMail?</h4>
+
+    <br><br>
+
+    <button type="create_account" name="button"><a href="/signup">Create Account</a> </button>
+
+  </div>
+
+</div>
