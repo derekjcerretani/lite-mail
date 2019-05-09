@@ -9,7 +9,7 @@ class EmailsController < ApplicationController
       @received_emails = Email.where(contact_id: Contact.where(user_id: @current_user.id))
 
       @contacts = @current_user.contacts
-
+      
       erb :'emails/index' , :layout => :mailbox
     end
   end

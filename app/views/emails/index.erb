@@ -20,9 +20,9 @@
           <% @contacts.each do |contact| %>
             <% contact_array << contact.address %>
           <% end %>
-          <ol>
+          <ul>
             <li><%= contact_array.uniq.join(", ") %></li>
-          </ol>
+          </ul>
       </div>
 
       <br>
