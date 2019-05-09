@@ -8,32 +8,37 @@
   <body>
 
     <header>
-      <img src="../images/roadrunner.jpeg" alt="roadrunner image">
-      <h1>Welcome, <%= @current_user.username.capitalize %></h1>
+      <div class="header">
+        <img src="../images/cactus-background.png" alt="roadrunner image">
+        <h1>Welcome, <%= @current_user.username.capitalize %></h1>
+      </div>
+      <div id="logout">
+        <button type="button" name="button"><a href="/logout">Logout</a></button>
+      </div>
     </header>
 
     <div class="container">
 
       <div id="contacts">
-        <h3>CONTACTS: </h3>
+        <h3>CONTACTS </h3>
           <% contact_array = [] %>
           <% @contacts.each do |contact| %>
             <% contact_array << contact.address %>
           <% end %>
-          <ul>
-            <li><%= contact_array.uniq.join(", ") %></li>
-          </ul>
+            <span><%= contact_array.uniq.join(", ") %></span>
       </div>
 
       <br>
       <br>
 
       <div id="inbox">
-        <h3>INBOX</h3>
-        <div id="create_new">
-          <button type="button" name="button"><a href="/new">Create New Email</a></button>
+        <div id="title_button">
+          <h3>INBOX</h3>
+          <div id="create_new">
+            <button type="button" name="button"><a href="/new">Create New Email</a></button>
+          </div>
         </div>
-        <span>(click message to see full correspondence)</span><br><br>
+        <span class="instruct">(click message to see full correspondence)</span><br><br>
         <% if @received_emails.empty? || nil %>
           <h3>Your inbox is empty</h3>
         <% else %>
@@ -48,7 +53,7 @@
       <br><br>
 
       <div id="outbox">
-        <h3>OUTBOX</h3><span>(click message to edit or delete)</span><br><br>
+        <h3>OUTBOX</h3><span class="instruct">(click message to edit or delete)</span><br><br>
         <% if @sent_emails.empty? || nil %>
           <h3>Your outbox is empty</h3>
         <% else %>
@@ -62,10 +67,6 @@
 
 
       <br><br>
-
-      <div id="logout">
-        <button type="button" name="button"><a href="/logout">Logout</a></button>
-      </div>
 
 
      </div> <!-- END CONTAINER -->

@@ -9,7 +9,7 @@ class EmailsController < ApplicationController
       @received_emails = Email.where(contact_id: Contact.where(user_id: @current_user.id))
 
       @contacts = @current_user.contacts
-      
+
       erb :'emails/index' , :layout => :mailbox
     end
   end
@@ -18,7 +18,7 @@ class EmailsController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
-      erb :'emails/new'
+      erb :'emails/new' , :layout => :mailbox
     end
   end
 
@@ -52,7 +52,7 @@ class EmailsController < ApplicationController
       emails.flatten.sort_by { |email| email.created_at}
       @conversation = emails.flatten
       if @email
-        erb :'/emails/show_email_inbox'
+        erb :'/emails/show_email_inbox' , :layout => :mailbox
       else
         redirect to '/inbox'
       end
@@ -65,7 +65,7 @@ class EmailsController < ApplicationController
     else
       @email = @current_user.emails.find(params[:id])
       if @email
-        erb :'/emails/show_email_outbox'
+        erb :'/emails/show_email_outbox' , :layout => :mailbox
       else
         redirect to '/inbox'
       end
@@ -78,7 +78,7 @@ class EmailsController < ApplicationController
     else
       @email = @current_user.emails.find(params[:id])
       if @email
-        erb :'/emails/edit_email'
+        erb :'/emails/edit_email' , :layout => :mailbox
       else
         redirect to '/inbox'
       end
