@@ -54,7 +54,7 @@ header img {
   margin: 8px auto;
 }
 
-#inbox {
+.inbox {
   display: flex;
   flex-direction: column;
   /* background: rgb(253, 255, 204); */
@@ -106,7 +106,7 @@ header img {
   color: white;
 }
 
-#logout button {
+#logout button, #new_box input[type=submit] {
   background-color: rgb(194, 118, 107);
   padding: .5rem 1rem;
   margin: 8px 20px 8px 1px;
@@ -114,6 +114,7 @@ header img {
   border-radius: 4px;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
+  color: white;
 }
 
 .inbox_message:hover, .outbox_message:hover {
@@ -147,6 +148,22 @@ header img {
   text-decoration: none;
   color: black;
 }
+
+input[id=new_contact], textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#new_box {
+  margin-top: 2rem;
+}
+
+
 
 footer {
   position: relative;

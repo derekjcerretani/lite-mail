@@ -1,15 +1,23 @@
-<h1>New Email</h1>
+<header>
+  <div class="header">
+    <img src="../images/cactus-background.png" alt="roadrunner image">
+    <h1>New Email</h1>
+  </div>
+  <div id="logout">
+    <button type="button" name="button"><a href="/logout">Logout</a></button>
+  </div>
+</header>
 
-<form action="/inbox" method="post">
-  <label>Add Contact: </label>
-  <input id="new_contact" type="text" name="contact[address]">
+<div class="inbox" id="new_box">
+  <form action="/inbox" method="post">
+    <input id="new_contact" type="text" name="contact[address]" placeholder="Add contact...">
 
-  <br><br>
+    <br><br>
 
-  <label for="email[content]">Content: </label>
-  <textarea type="text" id="new_email" name="email[content]" rows="8" cols="80"></textarea>
+    <textarea type="text" id="new_email" name="email[content]" placeholder="type message here..." rows="8" cols="80"></textarea>
 
-  <br><br>
+    <br><br>
 
-  <input type="submit" name="send" value="send">
-</form>
+    <input type="submit" name="send" value="send">
+  </form>
+</div>
