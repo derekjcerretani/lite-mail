@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
+  use Rack::Flash
 
   get '/signup' do
     if !logged_in?
@@ -10,6 +13,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params.any? {|k, v| v.empty?}
+      flash[:message] = "Please fill out all forms."
       erb :'users/failure'
     else
       contact = Contact.find_by(address: params[:email_address])
@@ -24,6 +28,7 @@ class UsersController < ApplicationController
         contact = Contact.create(address: params[:email_address], user_id: user.id)
         session[:user_id] = user.id
       end
+      flash[:message] = "There's already an account with that email address."
       redirect to '/login'
     end
   end
