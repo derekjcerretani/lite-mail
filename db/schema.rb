@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190507184223) do
+ActiveRecord::Schema.define(version: 20190509165915) do
 
   create_table "contacts", force: :cascade do |t|
     t.string  "address"
@@ -30,5 +30,7 @@ ActiveRecord::Schema.define(version: 20190507184223) do
     t.string "email_address"
     t.string "password_digest"
   end
+
+  add_index "users", ["email_address"], name: "index_users_on_email_address", unique: true
 
 end
