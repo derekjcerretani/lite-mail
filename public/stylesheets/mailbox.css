@@ -1,2 +1,83 @@
-body {
+header {
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  border-bottom: 1px solid black;
+  width: 100%;
+  margin-bottom: 5px;
+  top: 0;
+  background-color: rgb(233, 230, 223);
+  color: rgb(21, 55, 51)
+}
+
+header img {
+  width: 95px;
+  height: 75px;
+  padding: 10px;
+}
+
+.container {
+  margin-top: px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(219, 211, 198);
+}
+
+#contacts {
+  position: relative;
+  background: #fff;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 16px auto;
+  padding: 2.25%; /* 18px / 800px */
+  width: 35%;
+}
+
+#inbox {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 16px auto;
+  padding: 2.25%; /* 18px / 800px */
+  width: 100%;
+}
+
+.inbox_message {
+  background-color: #C0C0C0;
+  border: 1px solid black;
+  padding: .5rem;
+}
+
+.inbox_message a {
+  text-decoration: none;
+  color: black;
+}
+
+#outbox {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 16px auto;
+  padding: 2.25%; /* 18px / 800px */
+  width: 100%;
+}
+
+.outbox_message {
+  background-color: #C0C0C0;
+  border: 1px solid black;
+  padding: .5rem;
+
+}
+
+.outbox_message a {
+  text-decoration: none;
+  color: black;
 }

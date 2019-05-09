@@ -3,55 +3,72 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/mailbox.css">
-    <title>Error</title>
+    <title></title>
   </head>
   <body>
 
-    <h1>Welcome, <%= @current_user.username %></h1>
+    <header>
+      <img src="../images/roadrunner.jpeg" alt="roadrunner image">
+      <h1>Welcome, <%= @current_user.username.capitalize %></h1>
+    </header>
 
-    <h3>CONTACTS: </h3>
-      <% contact_array = [] %>
-      <% @contacts.each do |contact| %>
-        <% contact_array << contact.address %>
-      <% end %>
-      <ol>
-        <li><%= contact_array.uniq.join(", ") %></li>
-      </ol>
+    <div class="container">
 
-    <br>
-    <br>
+      <div id="contacts">
+        <h3>CONTACTS: </h3>
+          <% contact_array = [] %>
+          <% @contacts.each do |contact| %>
+            <% contact_array << contact.address %>
+          <% end %>
+          <ol>
+            <li><%= contact_array.uniq.join(", ") %></li>
+          </ol>
+      </div>
 
-    <h3>INBOX</h3><span>(click message to see full correspondence)</span><br><br>
-    <% if @received_emails.empty? || nil %>
-      <h3>Your inbox is empty</h3>
-    <% else %>
-    <% @received_emails.each_with_index do |email, i| %>
-        <ul>
-          <li><a href="/show_inbox/<%= email.id %>"><strong>From: </strong><%= email.user.email_address %>: <%= email.content %></a></li><br>
-        </ul>
-      <% end %>
-    <% end %>
+      <br>
+      <br>
 
-    <br><br>
+      <div id="inbox">
+        <h3>INBOX</h3>
+        <div id="create_new">
+          <button type="button" name="button"><a href="/new">Create New Email</a></button>
+        </div>
+        <span>(click message to see full correspondence)</span><br><br>
+        <% if @received_emails.empty? || nil %>
+          <h3>Your inbox is empty</h3>
+        <% else %>
+        <% @received_emails.each_with_index do |email, i| %>
+            <div class="inbox_message">
+              <span><a href="/show_inbox/<%= email.id %>"><strong>From: </strong><%= email.user.email_address %>: <%= email.content %></a></span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
 
-    <h3>OUTBOX</h3><span>(click message to edit or delete)</span><br><br>
-    <% if @sent_emails.empty? || nil %>
-      <h3>Your outbox is empty</h3>
-    <% else %>
-    <% @sent_emails.each_with_index do |email, i| %>
-        <ul>
-          <li><a href="show/<%= email.id %>"><strong>To: </strong><%= email.contact.address %>: <%= email.content %></a></li><br>
-        </ul>
-      <% end %>
-    <% end %>
+      <br><br>
+
+      <div id="outbox">
+        <h3>OUTBOX</h3><span>(click message to edit or delete)</span><br><br>
+        <% if @sent_emails.empty? || nil %>
+          <h3>Your outbox is empty</h3>
+        <% else %>
+        <% @sent_emails.each_with_index do |email, i| %>
+            <div class="outbox_message">
+              <span><a href="show/<%= email.id %>"><strong>To: </strong><%= email.contact.address %>: <%= email.content %></a></span><br>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
 
 
-    <br><br>
+      <br><br>
+
+      <div id="logout">
+        <button type="button" name="button"><a href="/logout">Logout</a></button>
+      </div>
 
 
-    <button type="button" name="button"><a href="/new">Create New Email</a></button>
-
-    <button type="button" name="button"><a href="/logout">Logout</a></button>
+     </div> <!-- END CONTAINER -->
 
 
   </body>
