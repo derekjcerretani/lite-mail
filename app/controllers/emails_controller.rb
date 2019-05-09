@@ -10,7 +10,7 @@ class EmailsController < ApplicationController
 
       @contacts = @current_user.contacts
 
-      erb :'emails/index'
+      erb :'emails/index' , :layout => :mailbox
     end
   end
 
