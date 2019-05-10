@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<div class="inbox" id="show_email">
+<div class="box" id="show_email">
   <% @conversation.each.with_index(1) do |email, i| %>
     <% if email.user_id == @current_user.id %>
       <p><%= i %>. From: <b><%= @current_user.username %></b>, <i><%= @current_user.email_address %></i> | <i><%= email.created_at.localtime.strftime("%F, %I:%M %p") %></i> <br><br><span class="email_content"><%= email.content %></span></p>

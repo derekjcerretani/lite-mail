@@ -18,6 +18,7 @@ class EmailsController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
+      @contacts = @current_user.contacts
       erb :'emails/new' , :layout => :mailbox
     end
   end

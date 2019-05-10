@@ -8,7 +8,16 @@
   </div>
 </header>
 
-<div class="inbox" id="new_box">
+<div id="contacts">
+  <h3>CONTACTS </h3>
+    <% contact_array = [] %>
+    <% @contacts.each do |contact| %>
+      <% contact_array << contact.address %>
+    <% end %>
+      <span><%= contact_array.uniq.join(", ") %></span>
+</div>
+
+<div class="box" id="new_box">
   <form action="/inbox" method="post">
     <input id="new_contact" type="text" name="contact[address]" placeholder="Add contact...">
 

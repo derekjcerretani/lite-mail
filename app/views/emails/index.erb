@@ -19,26 +19,17 @@
 
     <div class="container">
 
-      <div id="contacts">
-        <h3>CONTACTS </h3>
-          <% contact_array = [] %>
-          <% @contacts.each do |contact| %>
-            <% contact_array << contact.address %>
-          <% end %>
-            <span><%= contact_array.uniq.join(", ") %></span>
-      </div>
-
       <br>
       <br>
 
-      <div class="inbox">
+      <div class="box" id="inbox">
         <div id="title_button">
           <h3>INBOX</h3>
           <div id="create_new">
             <button type="button" name="button"><a href="/new">Create New Email</a></button>
           </div>
         </div>
-        <span class="instruct">(click message to see full correspondence)</span><br><br>
+        <span class="instruct">(click message to see full conversation)</span><br><br>
         <% if @received_emails.empty? || nil %>
           <h3>Your inbox is empty</h3>
         <% else %>
@@ -52,7 +43,7 @@
 
       <br><br>
 
-      <div id="outbox">
+      <div class="box" id="outbox">
         <h3>OUTBOX</h3><span class="instruct">(click message to edit or delete)</span><br><br>
         <% if @sent_emails.empty? || nil %>
           <h3>Your outbox is empty</h3>
