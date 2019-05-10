@@ -1,16 +1,36 @@
-<h1>Hi, <%= @current_user.username %></h1>
-<h2>Email #<%= @email.id %></h2>
+<header>
+  <div class="header">
+    <img src="../images/cactus-background.png" alt="roadrunner image">
+    <h1>Hi, <%= @current_user.username.capitalize %></h1>
+  </div>
+  <div id="logout">
+    <button type="button" name="button"><a href="/logout">Logout</a></button>
+  </div>
+</header>
 
-<h4>From: <%= @email.user.email_address %></h4><br>
-<h4>To: <%= @email.contact.address %></h4><br>
+<div id="email_contacts">
+  <div class="email_users">
+    <span>From: <b><%= @email.user.username %></b>, <i><%= @email.user.email_address %></i></span><br>
+    <span>To: <b><%= @current_user.username %></b>, <i><%= @email.contact.address %></i></span><br>
+  </div>
+  <div class="email_contact_buttons">
+    <button type="button" name="button"><a href="/new">Reply</a></button><br><br>
+    <button type="button" name="button"><a href="/inbox">Back to inbox</a> </button>
+  </div>
+</div>
 
-<% @conversation.each.with_index(1) do |email, i| %>
-  <% if email.user_id == @current_user.id %>
-    <p><%= i %>. From: <%= @current_user.email_address %> <br><br> <%= email.content %></p>
-  <% else  %>
-    <p><%= i %>. From: <%= email.user.email_address %> <br><br> <%= email.content %></p>
-  <% end  %>
-<% end %>
+<div class="inbox" id="show_email">
+  <% @conversation.each.with_index(1) do |email, i| %>
+    <% if email.user_id == @current_user.id %>
+      <p><%= i %>. From: <b><%= @current_user.username %></b>, <i><%= @current_user.email_address %></i> | <i><%= email.created_at.localtime.strftime("%F, %I:%M %p") %></i> <br><br><span class="email_content"><%= email.content %></span></p>
+    <% else  %>
+      <p><%= i %>. From: <b><%= email.user.username %></b>, <i><%= email.user.email_address %></i> | <i><%= email.created_at.localtime.strftime("%F, %I:%M %p") %></i> <br><br><span class="email_content"><%= email.content %></span></p>
+    <% end  %>
+  <% end %>
 
-<button type="button" name="button"><a href="/new">Reply</a></button><br><br>
-<button type="button" name="button"><a href="/inbox">Back to inbox</a> </button>
+  <div class="email_contact_buttons">
+    <button type="button" name="button"><a href="/new">Reply</a></button><br><br>
+    <button type="button" name="button"><a href="/inbox">Back to inbox</a> </button>
+  </div>
+
+</div>

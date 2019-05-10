@@ -101,12 +101,18 @@ header img {
   box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
 
-#create_new button a, #logout button a {
+#create_new button a,
+#logout button a,
+#show_email button[type=button] a,
+.email_contact_buttons button[type=button] a {
   text-decoration: none;
   color: white;
 }
 
-#logout button, #new_box input[type=submit] {
+#logout button,
+#new_box input[type=submit],
+#show_email button[type=button],
+.email_contact_buttons button[type=button] {
   background-color: rgb(194, 118, 107);
   padding: .5rem 1rem;
   margin: 8px 20px 8px 1px;
@@ -163,7 +169,49 @@ input[id=new_contact], textarea {
   margin-top: 2rem;
 }
 
+/*-------Show Email Styles --------*/
 
+#email_contacts {
+  display: flex;
+  justify-content: space-between;
+  /* background: rgb(253, 255, 204); */
+  background-color: rgb(233, 230, 223);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 8px auto;
+  padding: 2.25%; /* 18px / 800px */
+  width: 85%;
+}
+
+.email_contact_buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.email_contact_buttons button[type=button] {
+  width: 10rem;
+}
+
+.email_users {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 2rem;
+}
+
+#show_email p {
+  border-bottom: 1px solid #000;
+  padding-bottom: 2%;
+}
+
+.email_content
+
+  background-color: white;
+}
+
+/* -------Footer Styles--------- */
 
 footer {
   position: relative;
