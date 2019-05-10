@@ -50,7 +50,7 @@ header img {
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
   box-shadow: 0 0 10px rgba(0,0,0,.3);
   padding: 2.25%; /* 18px / 800px */
-  width: 85%;
+  width: 95%;
   margin: 8px auto;
 }
 
@@ -64,7 +64,7 @@ header img {
   box-shadow: 0 0 10px rgba(0,0,0,.3);
   margin: 8px auto;
   padding: 2.25%; /* 18px / 800px */
-  width: 85%;
+  width: 95%;
 }
 
 .inbox_message {
@@ -138,7 +138,7 @@ header img {
   box-shadow: 0 0 10px rgba(0,0,0,.3);
   margin: 8px auto;
   padding: 2.25%; /* 18px / 800px */
-  width: 85%;
+  width: 95%;
 }
 
 .outbox_message {
@@ -181,7 +181,7 @@ input[id=new_contact], textarea {
   box-shadow: 0 0 10px rgba(0,0,0,.3);
   margin: 8px auto;
   padding: 2.25%; /* 18px / 800px */
-  width: 85%;
+  width: 95%;
 }
 
 .email_contact_buttons {
