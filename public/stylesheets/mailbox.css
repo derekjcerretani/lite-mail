@@ -1,26 +1,18 @@
 body {
-  background: url("../images/cactus-background.png");
+   background: url("../images/cacti.jpg");
   /* background-color: rgb(194, 118, 107); */
 }
 
-header {
+ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1;
-  border-bottom: 1px solid black;
   width: 100%;
   margin-bottom: 5px;
   top: 0;
   background-color: rgb(233, 230, 223);
   color: #000;
-}
-
-
-h3 {
-  color: #000;
-  font-size: 2rem;
-  text-shadow: 2px 1px #fff;
 }
 
 .header {
@@ -29,9 +21,8 @@ h3 {
   align-items: center;
 }
 
-
 header img {
-  width: 95px;
+  width: 75px;
   height: 75px;
   padding: 10px;
   border-radius: 100%;
@@ -41,50 +32,50 @@ header img {
   margin-top: 2rem;
   position: relative;
   display: flex;
-  /* flex-direction: column; */
+  text-align: center;
 }
 
-#contacts {
-  /* background: rgb(253, 255, 204); */
-  background-color: rgb(233, 230, 223);
-  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-  box-shadow: 0 0 10px rgba(0,0,0,.3);
-  padding: 2.25%; /* 18px / 800px */
-  width: 95%;
-  margin: 8px auto;
+h3 {
+  color: #000;
+  font-size: 2rem;
+  text-shadow: 2px 1px #fff;
 }
 
 .box {
-  display: flex;
-  flex-direction: column;
   /* background: rgb(253, 255, 204); */
   background-color: rgb(233, 230, 223);
   -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
   box-shadow: 0 0 10px rgba(0,0,0,.3);
-  margin: 8px auto;
-  padding: 2.25%; /* 18px / 800px */
-  width: 95%;
-}
-
-.inbox_message {
-  background-color: #C0C0C0;
-  border: 1px solid black;
-  padding: .5rem;
-  width: 95%;
-  margin: 2px;
-}
-
-.inbox_message a {
-  text-decoration: none;
-  color: black;
+  margin: .5rem auto;
+  padding: 2.5%; /* 18px / 800px */
 }
 
 .instruct {
   margin-bottom: 10px;
   font-size: 1.5rem;
 }
+
+#inbox a {
+  text-decoration: none;
+}
+
+#inbox a div.inbox_message{
+  text-decoration: none;
+  background-color: #C0C0C0;
+  border: 2px solid #000;
+  padding: .5rem;
+  width: 95%;
+  margin: 2px;
+  text-decoration: none;
+  color: black;
+}
+
+#inbox a div.inbox_message:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  border: 2px solid rgb(88, 182, 129);
+}
+
 
 #title_button {
   display: flex;
@@ -93,18 +84,18 @@ header img {
 }
 
 #create_new button {
-  background-color: rgb(194, 118, 107);
+  background-color: rgb(249, 94, 102);
   padding: .5rem 1rem;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin-top: 2rem;
 }
 
 #create_new button a,
 #logout button a,
-#show_email button[type=button] a,
 .email_contact_buttons button[type=button] a {
   text-decoration: none;
   color: white;
@@ -112,9 +103,9 @@ header img {
 
 #logout button,
 #new_box input[type=submit],
-#show_email button[type=button],
-.email_contact_buttons button[type=button] {
-  background-color: rgb(194, 118, 107);
+.email_contact_buttons button[type=button],
+#edit_button {
+  background-color: rgb(249, 94, 102);
   padding: .5rem 1rem;
   margin: 8px 20px 8px 1px;
   border: none;
@@ -122,12 +113,108 @@ header img {
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
   color: white;
+  width: 10rem;
 }
 
-.inbox_message:hover, .outbox_message:hover {
-  background-color: rgb(196, 207, 97);
+/* -------Show Email Styles -------- */
+
+#email_contacts {
+  display: flex;
+  justify-content: space-between;
+  /* background: rgb(253, 255, 204); */
+  background-color: rgb(233, 230, 223);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
   box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 8px auto;
+  padding: 2.25%; /* 18px / 800px */
+  width: 95%;
+} */
+
+
+.email_users {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 2rem;
 }
+
+#show_email {
+  border-bottom: 1px solid #000;
+  padding-bottom: 2%;
+}
+
+.email_content {
+  background-color: white;
+}
+
+#show_email_buttons {
+  margin: .75rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+#show_email_buttons, button[type=button] {
+
+}
+
+#show_email_buttons, input[type=submit] {
+  padding: 1%;
+
+}
+
+#show_email_buttons, a {
+  text-decoration: none;
+  color: black
+}
+
+/*-------- New Email Styles --------*/
+
+#new_contacts, #new_box, #old_message, #new_message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+#new_box input[type=text], textarea[type=text] {
+  width: 90%;
+  margin: 1rem;
+}
+
+#new_box form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/*------- Edit Styles -------*/
+
+#old_message span {
+  background-color: white;
+  padding: 2rem;
+}
+
+#new_message form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/*-------Footer Styles-------*/
+
+footer {
+  bottom: 0;
+}
+
+/*
+
 
 #outbox, #inbox {
   margin-left: 5px;
@@ -161,53 +248,4 @@ input[id=new_contact], textarea {
 #new_box {
   margin-top: 2rem;
 }
-
-/*-------Show Email Styles --------*/
-
-#email_contacts {
-  display: flex;
-  justify-content: space-between;
-  /* background: rgb(253, 255, 204); */
-  background-color: rgb(233, 230, 223);
-  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-  box-shadow: 0 0 10px rgba(0,0,0,.3);
-  margin: 8px auto;
-  padding: 2.25%; /* 18px / 800px */
-  width: 95%;
-}
-
-.email_contact_buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.email_contact_buttons button[type=button] {
-  width: 10rem;
-}
-
-.email_users {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin: 2rem;
-}
-
-#show_email p {
-  border-bottom: 1px solid #000;
-  padding-bottom: 2%;
-}
-
-.email_content
-
-  background-color: white;
-}
-
-/* -------Footer Styles--------- */
-
-footer {
-  position: relative;
-  text-align: center;
-  margin-top: 40%;
-}
+*/

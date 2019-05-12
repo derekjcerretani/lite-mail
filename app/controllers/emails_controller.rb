@@ -34,38 +34,27 @@ class EmailsController < ApplicationController
         email.user = @current_user
         email.contact = contact
         email.save
-        redirect to '/inbox'
+        redirect to "/show_outbox/#{contact.address}"
       else
         redirect to '/new'
       end
     end
   end
 
-  get '/show_inbox/:id' do
+  get '/show_outbox/:contact' do
     if !logged_in?
       redirect to '/login'
     else
       emails = []
-      @email = Email.find(params[:id])
-      contact = @email.user
-      emails << @received_emails = Email.where(user_id: contact.id, contact_id: @current_user.id)
-      emails << @sent_emails = Email.where(user_id: @current_user.id, contact_id: contact.id)
-      emails.flatten.sort_by { |email| email.created_at}
-      @conversation = emails.flatten
-      if @email
-        erb :'/emails/show_email_inbox' , :layout => :mailbox
-      else
-        redirect to '/inbox'
-      end
-    end
-  end
+      @contact = Contact.find_by(address: params[:contact])
 
-  get '/show/:id' do
-    if !logged_in?
-      redirect to '/login'
-    else
-      @email = @current_user.emails.find(params[:id])
-      if @email
+      emails << @sent_emails = Email.where(contact_id: Contact.where(address: params[:contact]), user_id: @current_user.id)
+
+      emails << @recieved_emails = Email.where(contact_id: @current_user.id, user_id: Contact.where(address: params[:contact]))
+
+      @conversation = emails.flatten.sort_by { |email| email.created_at}
+
+      if !emails.nil?
         erb :'/emails/show_email_outbox' , :layout => :mailbox
       else
         redirect to '/inbox'
@@ -93,7 +82,7 @@ class EmailsController < ApplicationController
       if !params[:content].empty?
         @email = Email.find(params[:id])
         @email.update(content: params[:content])
-        redirect to '/inbox'
+        redirect to "/show_outbox/#{@email.contact.address}"
         binding.pry
       else
         redirect to "/edit/#{@email.id}"
@@ -106,8 +95,9 @@ class EmailsController < ApplicationController
       redirect '/login'
     else
       email = Email.find(params[:id])
+      contact = Contact.find(email.contact_id)
       email.delete
-      redirect to '/inbox'
+      redirect to "/show_outbox/#{contact.address}"
     end
   end
 

@@ -1,14 +1,15 @@
 <header>
   <div class="header">
-    <a href="/inbox"><img src="../images/cactus-background.png" alt="roadrunner image"></a>
-    <h1>New Email</h1>
+    <a href="/inbox"><img src="../images/black-letter.png" alt="envelope"></a>
+    <h1>New Message</h1>
   </div>
   <div id="logout">
     <button type="button" name="button"><a href="/logout">Logout</a></button>
+    <button type="button" name="button"><a href="/inbox">Back to inbox</a> </button>
   </div>
 </header>
 
-<div id="contacts">
+<div class="box" id="new_contacts">
   <h3>CONTACTS </h3>
     <% contact_array = [] %>
     <% @contacts.each do |contact| %>
@@ -19,7 +20,7 @@
 
 <div class="box" id="new_box">
   <form action="/inbox" method="post">
-    <input id="new_contact" type="text" name="contact[address]" placeholder="Add contact...">
+    <input type="text" name="contact[address]" placeholder="Add contact...">
 
     <br><br>
 

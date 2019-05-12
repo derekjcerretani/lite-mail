@@ -1,11 +1,28 @@
-<h3>Old Message: <%= @email.content %></h3>
+<header>
+  <div class="header">
+    <a href="/inbox"><img src="../images/black-letter.png" alt="envelope"></a>
+    <h1>Edit Message</h1>
+  </div>
+  <div id="logout">
+    <button type="button" name="button"><a href="/logout">Logout</a></button>
+    <button type="button" name="button"><a href="/inbox">Back to inbox</a> </button>
+  </div>
+</header>
+
+<div class="box" id="old_message">
+  <h3>Old Message:</h3>
+  <span><%= @email.content %></span>
+</div>
+
 
 <br><br><br>
 
-<h3>New Message:</h3><br>
+<div class="box" id="new_message">
+  <h3>New Message:</h3><br>
 
-<form action="/edit/<%= @email.id %>" method="POST">
-  <input type="hidden" name="_method" value="PATCH">
-  <textarea name="content" rows="8" cols="80"></textarea><br>
-  <input type="submit" name="submit" value="Edit">
-</form>
+  <form action="/edit/<%= @email.id %>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <textarea type="text" name="content" rows="8" cols="80"></textarea><br>
+    <input id="edit_button" type="submit" name="submit" value="Edit">
+  </form>
+</div>
