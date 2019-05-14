@@ -57,11 +57,11 @@ class EmailsController < ApplicationController
 
       emails << @recieved_emails = Email.where(contact_id: @current_user.id, user_id: Contact.where(address: params[:contact]))
 
-      @conversation = emails.flatten.sort_by { |email| email.created_at}
-
-      if !emails.nil?
+      @conversation = emails.flatten.sort_by { |email| email.created_at}.uniq
+      if !emails.empty? || nil
         erb :'/emails/show_email_outbox' , :layout => :mailbox
       else
+
         redirect to '/inbox'
       end
     end
