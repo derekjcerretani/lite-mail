@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class EmailsController < ApplicationController
+  use Rack::Flash
 
   get '/inbox' do
     if !logged_in?
@@ -34,8 +37,10 @@ class EmailsController < ApplicationController
         email.user = @current_user
         email.contact = contact
         email.save
+        flash[:message] = "Message sent."
         redirect to "/show_outbox/#{contact.address}"
       else
+        flash[:message] = "Please fill out all forms."
         redirect to '/new'
       end
     end
@@ -79,12 +84,13 @@ class EmailsController < ApplicationController
     if !logged_in?
       redirect '/login'
     else
+      @email = Email.find(params[:id])
       if !params[:content].empty?
-        @email = Email.find(params[:id])
         @email.update(content: params[:content])
+        flash[:message] = "Edit successful."
         redirect to "/show_outbox/#{@email.contact.address}"
-        binding.pry
       else
+        flash[:message] = "Form can't be blank."
         redirect to "/edit/#{@email.id}"
       end
     end
@@ -97,6 +103,7 @@ class EmailsController < ApplicationController
       email = Email.find(params[:id])
       contact = Contact.find(email.contact_id)
       email.delete
+      flash[:message] = "Message deleted."
       redirect to "/show_outbox/#{contact.address}"
     end
   end

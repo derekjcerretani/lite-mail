@@ -18,6 +18,9 @@
 <br><br><br>
 
 <div class="box" id="new_message">
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
   <h3>New Message:</h3><br>
 
   <form action="/edit/<%= @email.id %>" method="POST">

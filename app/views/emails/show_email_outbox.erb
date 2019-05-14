@@ -10,6 +10,9 @@
 </header>
 
 <div class="box" id="email_contacts">
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
   <div class="email_users">
     <span>From: <b><%= @current_user.username %></b>, <i><%= @current_user.email_address %></i></span><br>
     <span>To: <b><%= @contact.address %></b></span><br>
@@ -20,7 +23,7 @@
   </div>
 </div>
 
-<div class="box" id="show_email">
+<div class="box" id="show_email"
   <% @conversation.each.with_index(1) do |email, i| %>
     <% if email.user_id == @current_user.id %>
       <%= i %>. From:

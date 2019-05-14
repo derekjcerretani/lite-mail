@@ -19,6 +19,9 @@
 </div>
 
 <div class="box" id="new_box">
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
   <form action="/inbox" method="post">
     <input type="text" name="contact[address]" placeholder="Add contact...">
 
