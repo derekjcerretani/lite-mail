@@ -53,7 +53,7 @@
         <% @received_emails.each_with_index do |email, i| %>
             <a href="/show_outbox/<%= email.user.email_address %>">
               <div class="inbox_message">
-              <span><b>From: </b><%= email.user.email_address %>: <%= email.content %></span>
+                <span><b>From: </b><%= email.user.email_address %>: <%= email.content.slice(0..15) %>...</span>
               </div>
             </a>
           <% end %>
