@@ -58,7 +58,7 @@
         <div id="show_email_buttons">
           <button type="button" name="button"><a href="/edit/<%= email.id %>">Edit</a></button>
 
-          <form class="" action="/edit/<%= email.id %>/delete" method="POST">
+          <form action="/edit/<%= email.id %>/delete" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" name="submit" value="Delete">
           </form>

@@ -166,11 +166,9 @@ h3 {
   border-bottom: 1px solid black;
 }
 
-#show_email_buttons, button[type=button] {
-
-}
-
-#show_email_buttons, input[type=submit] {
+#show_email_buttons,
+input[type=submit],
+input[type=button] {
   padding: 1%;
 
 }
@@ -178,6 +176,12 @@ h3 {
 #show_email_buttons, a {
   text-decoration: none;
   color: black
+}
+
+.email_users {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 /*-------- New Email Styles --------*/
@@ -220,43 +224,7 @@ h3 {
 
 /*-------Footer Styles-------*/
 
-footer {
-  bottom: 0;
+footer.branding {
+  text-align: center;
+  margin-top: 10rem;
 }
-
-/*
-
-
-#outbox, #inbox {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.outbox_message {
-  background-color: #C0C0C0;
-  border: 1px solid black;
-  padding: .5rem;
-  width: 95%;
-  margin: 2px;
-
-}
-
-.outbox_message a {
-  text-decoration: none;
-  color: black;
-}
-
-input[id=new_contact], textarea {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-#new_box {
-  margin-top: 2rem;
-}
-*/
