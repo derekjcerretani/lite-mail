@@ -24,13 +24,14 @@
 
       <div class="box" id="contacts">
         <h3>CONTACTS </h3>
+        <span class="instruct">(click contact)</span><br><br>
           <% contact_array = [] %>
           <% @contacts.each do |contact| %>
             <% contact_array << contact.address %>
           <% end %>
           <span>
             <% contact_array.uniq.each do |contact| %>
-              <a class="contact" href="/show_outbox/<%= contact %>"><%= contact %></a><br>
+              <a class="contact" href="/show_outbox/<%= contact %>"><%= contact %></a><br><br>
             <% end %>
           </span>
           <div id="create_new">
