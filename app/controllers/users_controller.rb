@@ -25,7 +25,6 @@ class UsersController < ApplicationController
       contact.user_id = session[:user_id]
       contact.save
       user.save
-      binding.pry
       redirect to '/login'
     end
   end
