@@ -22,7 +22,6 @@ class UsersController < ApplicationController
       contact.user_id = session[:user_id]
       contact.save
       user.save
-      binding.pry
       if user.id == nil
         flash[:message] = "That email address is already registered."
         redirect to '/login'

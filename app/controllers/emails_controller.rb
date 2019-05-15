@@ -61,7 +61,6 @@ class EmailsController < ApplicationController
       if !emails.empty? || nil
         erb :'/emails/show_email_outbox' , :layout => :mailbox
       else
-
         redirect to '/inbox'
       end
     end
