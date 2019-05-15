@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     if params.any? {|k, v| v.empty?}
       flash[:message] = "Please fill out all forms."
       erb :'users/failure'
+    elsif params[:email_address] == User.where(email_address: params[:email_address])
+      flash[:message] = "That email address is already registered."
+      redirect to '/login'
     else
       user = User.create(username: params[:username], email_address: params[:email_address], password: params[:password])
       contact = Contact.find_or_create_by(address: params[:email_address])
@@ -22,10 +25,7 @@ class UsersController < ApplicationController
       contact.user_id = session[:user_id]
       contact.save
       user.save
-      if user.id == nil
-        flash[:message] = "That email address is already registered."
-        redirect to '/login'
-      end
+      binding.pry
       redirect to '/login'
     end
   end
